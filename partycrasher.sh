@@ -6,13 +6,15 @@ passwdcheck=false
 distupgrade=false
 devpackages=false
 
-#echo "Enter R00T password:"
+# Root privileges
 [ `whoami` = root ] || exec su -c $0 root
 
-# create user
-echo
+# adduser
+read -p "Add user? (y/n) " var1
+
+if [ "$var1" = "y" ]
+then
 echo "Create user + home directory"
-echo
 
 while [ $user = false ]
 do
@@ -40,19 +42,20 @@ do
         passwd "$uservar"
     fi
 done
+fi
 
 # sources
-read -p "Do you want clean Debian Stretch?(y/n) " var1
+read -p "Do you want clean Debian Stretch?(y/n) " var2
 
-if [ "$var1" = "y" ]
+if [ "$var2" = "y" ]
 then
     distupgrade=true
 fi
 
 # dev packages
-read -p "Do you want nodejs & NPM?(y/n) " var2
+read -p "Do you want nodejs & NPM?(y/n) " var3
 
-if [ "$var2" = "y" ]
+if [ "$var3" = "y" ]
 then
     devpackages=true
 fi
