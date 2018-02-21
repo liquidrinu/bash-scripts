@@ -6,7 +6,7 @@ passwdcheck=false
 distupgrade=false
 
 #echo "Enter R00T password:"
-[ `whoami` = root ] || exec su -c $0 root
+[ "$(whoami)" = "root" ] || exec su -c "$0" "root"
 
 # create user
 echo
@@ -15,7 +15,7 @@ echo
 
 while [ $user = false ]
 do
-    read -p "Username: " uservar
+    read -pr "Username: " uservar
 
     if [ `id -u $uservar 2>/dev/null || echo -1` -ge 0 ]
     then
@@ -32,18 +32,18 @@ while [ $passwdcheck = false ]
 do
 CHECK=$(passwd --status $uservar | awk '{print $2}')
 
-    if [ $CHECK = "P" ]
+    if [ "$CHECK" = "P" ]
     then
         passwdcheck=true
     else
-        passwd $uservar
+        passwd "$uservar"
     fi
 done
 
 # sources
-read -p "Do you want clean Debian Stretch?(y/n)" var1
+read -pr "Do you want clean Debian Stretch?(y/n)" var1
 
-if [ $var1 = "y" ]
+if [ "$var1" = "y" ]
 then
     distupgrade=true
 fi
@@ -85,9 +85,3 @@ apt-get install openssh-server -y && service ssh start
 
 echo 'localhost:'
 ip route get 8.8.8.8 | awk '{print $NF; exit}'
-
-#cd /home/development/
-
-
-
-
