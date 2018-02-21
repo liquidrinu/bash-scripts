@@ -5,11 +5,14 @@ user=false
 passwdcheck=false
 distupgrade=false
 devpackages=false
+profilepkg=false
 
 # Root privileges
+echo -e "\e[96m";
 [ `whoami` = root ] || exec su -c $0 root
 
 # adduser
+echo -e "\e[38;5;82m"
 read -p "Add user? (y/n) " var1
 
 if [ "$var1" = "y" ]
@@ -60,10 +63,19 @@ then
     devpackages=true
 fi
 
+# custom packages (profile)
+echo -e "\e[95m"
+read -p  "Custom Profile packages? o_o (y/n)" profile
+
+if [ "$profile" = "y" ]
+then
+    profilepkg=true
+fi
+
 if [ $distupgrade = true ]
 then
-cat /etc/apt/sources.list > sources.bkup1
-rm  /etc/apt/sources.list
+    cat /etc/apt/sources.list > sources.bkup1
+    rm  /etc/apt/sources.list
 
 SOURCE=$(cat <<EOF
 deb http://deb.debian.org/debian stretch main
@@ -79,13 +91,20 @@ EOF
 echo "$SOURCE" > /etc/apt/sources.list
 fi
 
+if [ $profilepkg = true ]
+then
+for i in {14..21} {21..76} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
 # init
-apt-get update && apt-get upgrade -y
-apt autoclean -y  && apt autoremove -y
+    apt-get update && apt-get upgrade -y
+    apt autoclean -y  && apt autoremove -y
 
-# basic packages
-apt-get install sudo htop git curl wget mpv -y
-apt-get install net-tools
+# personal profile packages
+echo -e "\e[38;5;198m \n"
+echo -e "Profile Packages"
+echo -e "\n"
+    apt-get install sudo htop git curl wget mpv -y
+    apt-get install net-tools
+fi
 
 # development
 if [ $devpackages = true ]
@@ -100,8 +119,13 @@ apt-get install openssh-server -y && service ssh start
 
 # summary
 localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
-echo
-echo -e "\033[31;7m user = $uservar                            ";
-echo -e "\033[31;7m home = /home/$uservar                      ";
-echo -e "\033[31;7m host =  $localip                           ";
+echo -e "\e[93m";
+
+if [ "$user" = "true" ]
+then
+echo -e "user =  $uservar                            ";
+echo -e "home =  /home/$uservar                      ";
+fi
+
+echo -e "host =  $localip               ";
 echo -e "\033[0m";
