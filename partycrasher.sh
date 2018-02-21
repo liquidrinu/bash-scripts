@@ -4,6 +4,7 @@
 user=false
 passwdcheck=false
 distupgrade=false
+devpackages=false
 
 #echo "Enter R00T password:"
 [ `whoami` = root ] || exec su -c $0 root
@@ -48,6 +49,14 @@ then
     distupgrade=true
 fi
 
+# dev packages
+read -p "Do you want nodejs & NPM?(y/n) " var2
+
+if [ "$var2" = "y" ]
+then
+    devpackages=true
+fi
+
 if [ $distupgrade = true ]
 then
 cat /etc/apt/sources.list > sources.bkup1
@@ -76,9 +85,12 @@ apt-get install sudo htop git curl wget mpv -y
 apt-get install net-tools
 
 # development
-#curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-#apt-get install -y nodejs && apt-get install -y npm
-#npm install npm@latest -g
+if [ $devpackages = true ]
+then
+    curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+    apt-get install -y nodejs && apt-get install -y npm
+    npm install npm@latest -g
+fi
 
 ## initialize ssh server
 apt-get install openssh-server -y && service ssh start
