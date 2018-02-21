@@ -17,7 +17,7 @@ read -p "Add user? (y/n) " var1
 
 if [ "$var1" = "y" ]
 then
-echo "Create user + home directory"
+    echo "Create user + home directory"
 
 while [ $user = false ]
 do
@@ -51,16 +51,16 @@ fi
 read -p "Do you want clean Debian Stretch?(y/n) " var2
 
 if [ "$var2" = "y" ]
-then
-    distupgrade=true
+    then
+        distupgrade=true
 fi
 
 # dev packages
 read -p "Do you want nodejs & NPM?(y/n) " var3
 
 if [ "$var3" = "y" ]
-then
-    devpackages=true
+    then
+        devpackages=true
 fi
 
 # custom packages (profile)
@@ -68,14 +68,14 @@ echo -e "\e[95m"
 read -p  "Custom Profile packages? o_o (y/n)" profile
 
 if [ "$profile" = "y" ]
-then
-    profilepkg=true
+    then
+        profilepkg=true
 fi
 
 if [ $distupgrade = true ]
-then
-    cat /etc/apt/sources.list > sources.bkup1
-    rm  /etc/apt/sources.list
+    then
+        cat /etc/apt/sources.list > sources.bkup1
+        rm  /etc/apt/sources.list
 
 SOURCE=$(cat <<EOF
 deb http://deb.debian.org/debian stretch main
@@ -107,8 +107,7 @@ echo -e "\n"
 fi
 
 # development
-if [ $devpackages = true ]
-then
+if [ $devpackages = true ] then
     curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
     apt-get install -y nodejs && apt-get install -y npm
     npm install npm@latest -g
@@ -121,11 +120,9 @@ apt-get install openssh-server -y && service ssh start
 localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 echo -e "\e[93m";
 
-if [ "$user" = "true" ]
-then
+if [ "$user" = "true" ] then
 echo -e "user =  $uservar                            ";
 echo -e "home =  /home/$uservar                      ";
 fi
-
 echo -e "host =  $localip               ";
 echo -e "\033[0m";
