@@ -21,29 +21,29 @@ do
     then
         echo "user already exists!"
     else
-        useradd -m -d "/home/$uservar" -s /bin/bash -U "$uservar"
-        usermod -a -G sudo "$uservar"
-        user=true
+    useradd -m -d "/home/$uservar" -s /bin/bash -U "$uservar"
+    usermod -a -G sudo "$uservar"
+    user=true
     fi
 done
 
 # set password
 while [ $passwdcheck = false ]
 do
-    CHECK=$(passwd --status $uservar | awk '{print $2}')
+CHECK=$(passwd --status $uservar | awk '{print $2}')
 
-    if [ "$CHECK" = "P" ]
+    if [ $CHECK = "P" ]
     then
         passwdcheck=true
     else
-        passwd "$uservar"
+        passwd $uservar
     fi
 done
 
 # sources
-read -p "Do you want clean Debian Stretch?(y/n) " var1
+read -p "Do you want clean Debian Stretch?(y/n)" var1
 
-if [ "$var1" = "y" ]
+if [ $var1 = "y" ]
 then
     distupgrade=true
 fi
@@ -83,10 +83,11 @@ apt-get install net-tools
 ## initialize ssh server
 apt-get install openssh-server -y && service ssh start
 
-# summary
-localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
-echo
-echo -e "\033[31;7m user = $uservar"
-echo -e "\033[31;7m home = /home/$uservar"
-echo -e "\033[31;7m host =  $localip"
-echo -e "\033[0m"
+echo 'localhost:'
+ip route get 8.8.8.8 | awk '{print $NF; exit}'
+
+#cd /home/development/
+
+
+
+
