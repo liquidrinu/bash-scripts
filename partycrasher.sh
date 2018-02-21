@@ -107,7 +107,8 @@ echo -e "\n"
 fi
 
 # development
-if [ $devpackages = true ] then
+if [ $devpackages = true ] 
+then
     curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
     apt-get install -y nodejs && apt-get install -y npm
     npm install npm@latest -g
@@ -120,7 +121,8 @@ apt-get install openssh-server -y && service ssh start
 localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 echo -e "\e[93m";
 
-if [ "$user" = "true" ] then
+if [ "$user" = "true" ] 
+then
 echo -e "user =  $uservar                            ";
 echo -e "home =  /home/$uservar                      ";
 fi
