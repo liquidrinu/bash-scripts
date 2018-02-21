@@ -104,8 +104,8 @@ echo -e "Profile Packages"
 echo -e "\n"
     apt-get install sudo htop git curl wget mpv -y
     apt-get install net-tools
-echo -e "\033[0m";
 fi
+echo -e "\033[0m";
 
 # development
 if [ $devpackages = true ] 
