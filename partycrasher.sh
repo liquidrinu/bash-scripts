@@ -101,7 +101,7 @@ apt-get install openssh-server -y && service ssh start
 # summary
 localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 echo
-echo -e "\033[31;7m user = $uservar"; tput sgr0
-echo -e "\033[31;7m home = /home/$uservar"; tput sgr0
-echo -e "\033[31;7m host =  $localip"; tput sgr0
-echo -e "\033[0m"; tput sgr0
+echo -e "\033[31;7m user = $uservar                            ";
+echo -e "\033[31;7m home = /home/$uservar                      ";
+echo -e "\033[31;7m host =  $localip                           ";
+echo -e "\033[0m";
