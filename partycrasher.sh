@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# variables
-user=false
-passwdcheck=false
-distupgrade=false
-devpackages=false
-profilepkg=false
-
 # insert packages
 APT=('sudo' 'htop' 'git' 'curl' 'wget' 'mpv' 'net-tools');
 
@@ -22,6 +15,7 @@ if [ "$var1" = "y" ]
 then
     echo "Create user + home directory"
 
+user=false
 while [ $user = false ]
 do
     read -p "Username: " uservar
@@ -37,6 +31,7 @@ do
 done
 
 # set password
+passwdcheck=false
 while [ $passwdcheck = false ]
 do
     CHECK=$(passwd --status $uservar | awk '{print $2}')
