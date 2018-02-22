@@ -54,8 +54,8 @@ if [ "$var2" = "y" ]
 fi
 
 # dev packages
+devapackes=false
 read -p "Do you want nodejs & npm?(y/n) " var3
-
 if [ "$var3" = "y" ]
     then
         devpackages=true
@@ -70,6 +70,7 @@ if [ "$profile" = "y" ]
         profilepkg=true
 fi
 
+distupgrade=false
 if [ $distupgrade = true ]
     then
         cat /etc/apt/sources.list > sources.bkup1
