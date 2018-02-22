@@ -7,6 +7,9 @@ distupgrade=false
 devpackages=false
 profilepkg=false
 
+# insert packages
+APT=('sudo' 'htop' 'git' 'curl' 'wget' 'mpv' 'net-tools');
+
 # Root privileges
 echo -e "\e[96m";
 [ `whoami` = root ] || exec su -c $0 root
@@ -102,8 +105,7 @@ for i in {14..21} {21..76} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
 echo -e "\e[38;5;198m \n"
 echo -e "Profile Packages"
 echo -e "\n"
-    apt-get install sudo htop git curl wget mpv -y
-    apt-get install net-tools
+    apt-get install ${APT[@]} -y
 fi
 echo -e "\033[0m";
 
