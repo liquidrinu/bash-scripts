@@ -64,6 +64,7 @@ fi
 # custom packages (profile)
 echo -e "\e[95m"
 read -p  "Custom Profile packages? o_o (y/n)" profile
+profilepkg=false
 
 if [ "$profile" = "y" ]
     then
