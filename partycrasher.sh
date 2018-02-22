@@ -51,7 +51,7 @@ done
 fi
 
 # sources
-read -p "Do you want clean Debian Stretch?(y/n) " var2
+read -p "Do you want clean install of Debian Stretch?(y/n) " var2
 
 if [ "$var2" = "y" ]
     then
@@ -59,7 +59,7 @@ if [ "$var2" = "y" ]
 fi
 
 # dev packages
-read -p "Do you want nodejs & NPM?(y/n) " var3
+read -p "Do you want nodejs & npm?(y/n) " var3
 
 if [ "$var3" = "y" ]
     then
