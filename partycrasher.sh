@@ -3,6 +3,12 @@
 # insert packages
 APT=('sudo' 'htop' 'git' 'curl' 'wget' 'mpv' 'net-tools');
 
+USER=false
+PASSWD=false
+DISTRO=false
+DEV=false
+PROFILE=false
+
 # Root privileges
 echo -e "\e[96m";
 [ `whoami` = root ] || exec su -c $0 root
@@ -12,33 +18,31 @@ echo -e "\e[38;5;82m"
 read -p "Add user? (y/n) " var1
 
 if [ "$var1" = "y" ]
-then
+  then
     echo "Create user + home directory"
 
-user=false
-while [ $user = false ]
-do
+while [ $USER = false ]
+  do
     read -p "Username: " uservar
 
     if [ `id -u $uservar 2>/dev/null || echo -1` -ge 0 ]
-    then
+      then
         echo "user already exists!"
-    else
+      else
         useradd -m -d "/home/$uservar" -s /bin/bash -U "$uservar"
         usermod -a -G sudo "$uservar"
-        user=true
+        USER=true
     fi
 done
 
 # set password
-passwdcheck=false
-while [ $passwdcheck = false ]
+while [ $PASSWD = false ]
 do
     CHECK=$(passwd --status $uservar | awk '{print $2}')
 
     if [ "$CHECK" = "P" ]
     then
-        passwdcheck=true
+        PASSWD=true
     else
         passwd "$uservar"
     fi
@@ -49,33 +53,30 @@ fi
 read -p "Do you want clean install of Debian Stretch?(y/n) " var2
 
 if [ "$var2" = "y" ]
-    then
-        distupgrade=true
+  then
+      DISTRO=true
 fi
 
 # dev packages
-devpackages=false
 read -p "Do you want nodejs & npm?(y/n) " var3
 if [ "$var3" = "y" ]
-    then
-        devpackages=true
+  then
+      DEV=true
 fi
 
 # custom packages (profile)
 echo -e "\e[95m"
 read -p  "Custom Profile packages? o_o (y/n)" profile
-profilepkg=false
 
 if [ "$profile" = "y" ]
-    then
-        profilepkg=true
+  then
+      PROFILE=true
 fi
 
-distupgrade=false
-if [ $distupgrade = true ]
-    then
-        cat /etc/apt/sources.list > sources.bkup1
-        rm  /etc/apt/sources.list
+if [ $DISTRO = true ]
+  then
+    cat /etc/apt/sources.list > sources.bkup1
+    rm  /etc/apt/sources.list
 
 SOURCE=$(cat <<EOF
 deb http://deb.debian.org/debian stretch main
@@ -91,7 +92,7 @@ EOF
 echo "$SOURCE" > /etc/apt/sources.list
 fi
 
-if [ $profilepkg = true ]
+if [ $PROFILE = true ]
 then
 for i in {14..21} {21..76} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
 # init
@@ -107,8 +108,8 @@ fi
 echo -e "\033[0m";
 
 # development
-if [ $devpackages = true ] 
-then
+if [ $DEV = true ] 
+  then
     curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
     apt-get install -y nodejs && apt-get install -y npm
     npm install npm@latest -g
@@ -122,9 +123,9 @@ localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 echo -e "\e[93m";
 
 if [ "$user" = "true" ] 
-then
-echo -e "user =  $uservar                            ";
-echo -e "home =  /home/$uservar                      ";
+  then
+  echo -e "user =  $uservar                            ";
+  echo -e "home =  /home/$uservar                      ";
 fi
-echo -e "host =  $localip               ";
-echo -e "\033[0m";
+  echo -e "host =  $localip               ";
+  echo -e "\033[0m";
