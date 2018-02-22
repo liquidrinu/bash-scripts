@@ -54,7 +54,7 @@ if [ "$var2" = "y" ]
 fi
 
 # dev packages
-devapackes=false
+devpackages=false
 read -p "Do you want nodejs & npm?(y/n) " var3
 if [ "$var3" = "y" ]
     then
