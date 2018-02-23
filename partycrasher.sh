@@ -126,7 +126,7 @@ if [ $DEV = true ]
     if [ $USER = true ]
     then
     # scriptvar="https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh"
-    su -i "$uservar"
+    su "$uservar"
     # curl -o- "$scriptvar" | bash
     # nvm install node
     # else 
