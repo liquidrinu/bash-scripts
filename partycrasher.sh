@@ -136,6 +136,7 @@ EOF
 )
   fi
   echo "$SSH_CREDS" >> "/etc/ssh/sshd_config"
+  service ssh reload
 fi
 
 # development
