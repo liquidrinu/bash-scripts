@@ -139,17 +139,17 @@ EOF
 fi
 
 # development
-if [ $DEV = true ] 
-  then
-    if [ $USER = true ]
-    then
+#if [ $DEV = true ] 
+#  then
+    #if [ $USER = true ]
+    #then
     # scriptvar="https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh"
     #su "$uservar"
     #curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     #echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     #sudo apt-get update && sudo apt-get install yarn
-    fi
-fi
+    #fi
+#fi
 
 # summary
 localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
