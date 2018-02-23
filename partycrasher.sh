@@ -78,7 +78,7 @@ if [ "$profile" = "y" ]
 fi
 
 # dev packages
-if [ "$USER" && "$PROFILE" = "true" ]
+if [ "$USER" = "true" ] && [ "$PROFILE" = "true" ]
   then
   read -p "Do you want nodejs & yarn? [y/N] " var4
   if [ "$var4" = "y" ]
