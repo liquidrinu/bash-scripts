@@ -115,10 +115,11 @@ if [ $DEV = true ]
     ## curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
     ## apt-get install -y nodejs && apt-get install -y npm
     ## npm install npm@latest -g
+    echo -e "$USERVAR"
     if [ $USER = true ]
     then
     runuser -l "$USERVAR" -c \
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+    $(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash)
     nvm install node
     else 
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
