@@ -131,7 +131,7 @@ SSH_CREDS=$(cat <<EOF
 
 Port 22
 PermitRootLogin no
-AllowUsers "$uservar"
+AllowUsers $uservar
 EOF
 )
   fi
