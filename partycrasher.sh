@@ -68,6 +68,7 @@ fi
 
 # dev packages
 if [ "$USER" = "true" ]
+  then
   read -p "Do you want nodejs & npm? [y/N] " var4
   if [ "$var4" = "y" ]
     then
