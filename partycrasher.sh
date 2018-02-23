@@ -66,8 +66,8 @@ if [ "$var3" = "y" ]
 fi
 
 # custom packages (profile)
-echo -e "\e[95m"
-echo -e "Currently set: ${APT[@]}\e[38;5;82m"
+echo -e ""
+echo -e "\e[38;5;82m \e[5mBlinkCurrently set:\e[95m ${APT[@]}\e[38;5;82m"
 read -p "Install? [y/N]" profile
 echo -e "\e[95m"
 
