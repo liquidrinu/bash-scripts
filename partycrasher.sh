@@ -70,7 +70,8 @@ echo -e ""
 echo -e "\e[38;5;82mCurrently set: \e[95m ${APT[@]}\e[38;5;82m"
 read -p "Install? [y/N]" profile
 echo -e "\e[95m"
-
+echo  -e "\033[33;5mTitle of the Program\033[0m"
+echo  -e "\033[33;7mTitle of the Program\033[0m"
 
 if [ "$profile" = "y" ]
   then
