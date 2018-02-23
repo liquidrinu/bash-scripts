@@ -32,11 +32,10 @@ while [ $USER = false ]
       else
         sudo useradd -m -d "/home/$uservar" -s /bin/bash -U "$uservar"
         sudo usermod -a -G sudo "$uservar"
-        USERVAR=$uservar
         USER=true
     fi
 done
-echo -e "USERVAR"
+echo -e "$uservar"
 # set password
 while [ $PASSWD = false ]
 do
