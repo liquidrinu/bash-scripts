@@ -111,16 +111,14 @@ echo -e "\033[0m";
 # development
 if [ $DEV = true ] 
   then
-    ## curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-    ## apt-get install -y nodejs && apt-get install -y npm
-    ## npm install npm@latest -g
     if [ $USER = true ]
     then
-    runuser -l "$uservar" \
-    "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash"
-    nvm install node
+    scriptvar="https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh"
+    runuser -l "$uservar" -c \
+    "curl -o- "$scriptvar" | bash"
+    runuser -l "$uservar" -c "nvm install node"
     else 
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+    curl -o- "$scriptvar" | bash
     nvm install node
     fi
 fi
