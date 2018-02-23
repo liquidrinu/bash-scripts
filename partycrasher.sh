@@ -114,8 +114,8 @@ echo -e "\033[0m";
 # development
 if [ $DEV = true ] 
   then
-    if [ $USER = true ]
-    then
+    #if [ $USER = true ]
+    #then
     # scriptvar="https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh"
     # su "$uservar"
     # curl -o- "$scriptvar" | bash
@@ -123,7 +123,7 @@ if [ $DEV = true ]
     # else 
     # curl -o- "$scriptvar" | bash
     # nvm install node
-    fi
+    #fi
 fi
 
 ## initialize ssh server
