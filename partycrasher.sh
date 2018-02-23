@@ -36,7 +36,7 @@ while [ $USER = false ]
         USER=true
     fi
 done
-
+echo -e "USERVAR"
 # set password
 while [ $PASSWD = false ]
 do
@@ -108,14 +108,13 @@ echo -e "\n"
     apt-get install ${APT[@]} -y
 fi
 echo -e "\033[0m";
-echo -e "$USERVAR"
+
 # development
 if [ $DEV = true ] 
   then
     ## curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
     ## apt-get install -y nodejs && apt-get install -y npm
     ## npm install npm@latest -g
-    echo -e "$USERVAR"
     if [ $USER = true ]
     then
     runuser -l "$USERVAR" -c \
