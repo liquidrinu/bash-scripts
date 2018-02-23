@@ -59,7 +59,7 @@ if [ "$var2" = "y" ]
       DISTRO=true
 fi
 
-# dev packages
+# openSSH
 read -p "Do you want openSSH? [y/N] " var3
 if [ "$var3" = "y" ]
   then
@@ -103,7 +103,7 @@ EOF
 echo "$SOURCE" > /etc/apt/sources.list
 fi
 
-if [ $PROFILE = true ]
+if [ "$PROFILE" = "true" ]
 then
 for i in {14..21} {21..76} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
 # init
@@ -134,9 +134,9 @@ echo -e "\033[0m";
 #fi
 
 ## initialize ssh server
-if ["$SSH" = true ]
-then
-apt-get install openssh-server -y && service ssh start
+if [ "$SSH" = "true" ]
+  then
+    apt-get install openssh-server -y && service ssh start
 fi
 
 # summary
