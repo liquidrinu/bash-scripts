@@ -7,6 +7,7 @@ USERVAR=false
 USER=false
 PASSWD=false
 DISTRO=false
+SSH=false
 DEV=false
 PROFILE=false
 
@@ -59,6 +60,13 @@ if [ "$var2" = "y" ]
 fi
 
 # dev packages
+read -p "Do you want openSSH? [y/N] " var4
+if [ "$var4" = "y" ]
+  then
+      SSH=true
+fi
+
+# dev packages
 read -p "Do you want nodejs & npm? [y/N] " var3
 if [ "$var3" = "y" ]
   then
@@ -70,8 +78,6 @@ echo -e ""
 echo -e "\e[38;5;82mCurrently set: \e[95m ${APT[@]}\e[38;5;82m"
 read -p "Install? [y/N]" profile
 echo -e "\e[95m"
-echo  -e "\033[33;5mTitle of the Program\033[0m"
-echo  -e "\033[33;7mTitle of the Program\033[0m"
 
 if [ "$profile" = "y" ]
   then
@@ -128,7 +134,10 @@ echo -e "\033[0m";
 #fi
 
 ## initialize ssh server
+if ["SSH" = true ]
+then
 apt-get install openssh-server -y && service ssh start
+fi
 
 # summary
 localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
