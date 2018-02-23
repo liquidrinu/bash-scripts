@@ -125,12 +125,16 @@ echo -e "\033[0m";
 if [ "$SSH" = "true" ]
   then
   apt-get install openssh-server -y && service ssh start
-  SSH_CREDS=$(cat <<EOF
-    Port 22
-    PermitRootLogin no
-    AllowUsers "$uservar"
-  EOF
-  )
+  if [ "$USER" = "true" ]
+  then
+SSH_CREDS=$(cat <<EOF
+
+Port 22
+PermitRootLogin no
+AllowUsers "$uservar"
+EOF
+)
+  fi
   echo "$SSH_CREDS" >> "/etc/ssh/sshd_config"
 fi
 
