@@ -66,15 +66,6 @@ if [ "$var3" = "y" ]
       SSH=true
 fi
 
-# dev packages
-if [ "$USER" = "true" ]
-  then
-  read -p "Do you want nodejs & npm? [y/N] " var4
-  if [ "$var4" = "y" ]
-    then
-        DEV=true
-  fi
-fi
 # custom packages (profile)
   echo -e ""
   echo -e "\e[38;5;82mCurrently set: \e[95m ${APT[@]}\e[38;5;82m"
@@ -84,6 +75,16 @@ fi
 if [ "$profile" = "y" ]
   then
       PROFILE=true
+fi
+
+# dev packages
+if [ "$USER" && "$PROFILE" = "true" ]
+  then
+  read -p "Do you want nodejs & yarn? [y/N] " var4
+  if [ "$var4" = "y" ]
+    then
+        DEV=true
+  fi
 fi
 
 if [ $DISTRO = true ]
@@ -102,7 +103,7 @@ deb http://security.debian.org/debian-security/ stretch/updates main
 deb-src http://security.debian.org/debian-security/ stretch/updates main
 EOF
 )
-echo "$SOURCE" > /etc/apt/sources.list
+echo "$SOURCE" > "/etc/apt/sources.list"
 fi
 
 if [ "$PROFILE" = "true" ]
@@ -120,6 +121,19 @@ echo -e "\n"
 fi
 echo -e "\033[0m";
 
+## initialize ssh server
+if [ "$SSH" = "true" ]
+  then
+  apt-get install openssh-server -y && service ssh start
+  SSH_CREDS=$(cat <<EOF
+    Port 22
+    PermitRootLogin no
+    AllowUsers "$uservar"
+  EOF
+  )
+  echo "$SSH_CREDS" >> "/etc/ssh/sshd_config"
+fi
+
 # development
 if [ $DEV = true ] 
   then
@@ -127,18 +141,10 @@ if [ $DEV = true ]
     then
     # scriptvar="https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh"
     su "$uservar"
-    # curl -o- "$scriptvar" | bash
-    # nvm install node
-    # else 
-    # curl -o- "$scriptvar" | bash
-    # nvm install node
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt-get update && sudo apt-get install yarn
     fi
-fi
-
-## initialize ssh server
-if [ "$SSH" = "true" ]
-  then
-    apt-get install openssh-server -y && service ssh start
 fi
 
 # summary
