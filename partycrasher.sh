@@ -60,15 +60,15 @@ if [ "$var2" = "y" ]
 fi
 
 # dev packages
-read -p "Do you want openSSH? [y/N] " var4
-if [ "$var4" = "y" ]
+read -p "Do you want openSSH? [y/N] " var3
+if [ "$var3" = "y" ]
   then
       SSH=true
 fi
 
 # dev packages
-read -p "Do you want nodejs & npm? [y/N] " var3
-if [ "$var3" = "y" ]
+read -p "Do you want nodejs & npm? [y/N] " var4
+if [ "$var4" = "y" ]
   then
       DEV=true
 fi
@@ -134,7 +134,7 @@ echo -e "\033[0m";
 #fi
 
 ## initialize ssh server
-if ["SSH" = true ]
+if ["$SSH" = true ]
 then
 apt-get install openssh-server -y && service ssh start
 fi
