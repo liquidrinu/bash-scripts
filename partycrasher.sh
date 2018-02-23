@@ -67,7 +67,7 @@ fi
 
 # custom packages (profile)
 echo -e ""
-echo -e "\e[38;5;82m \e[5mBlink Currently set: \e[95m ${APT[@]}\e[38;5;82m"
+echo -e "\e[38;5;82m Currently set: \e[95m ${APT[@]}\e[38;5;82m"
 read -p "Install? [y/N]" profile
 echo -e "\e[95m"
 
