@@ -67,9 +67,12 @@ fi
 
 # custom packages (profile)
 echo -e ""
-echo -e "\e[38;5;82m Currently set: \e[95m ${APT[@]}\e[38;5;82m"
+echo -e "\e[38;5;82mCurrently set: \e[95m ${APT[@]}\e[38;5;82m"
 read -p "Install? [y/N]" profile
 echo -e "\e[95m"
+	
+
+echo -e "Normal \e[5mBlink \e[25mNormal"
 
 if [ "$profile" = "y" ]
   then
