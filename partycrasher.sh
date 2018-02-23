@@ -69,8 +69,8 @@ fi
 echo -e "\e[95m"
 echo -e "Currently set: ${APT[@]}"
 echo -e "\e[38;5;82m"
-read -p "Custom Profile packages? o_o (y/n)" profile
-echo -e "\e[95m"
+read -p "\e[95mInstall ^^ ? (y/n)" profile
+echo -e ""
 
 if [ "$profile" = "y" ]
   then
