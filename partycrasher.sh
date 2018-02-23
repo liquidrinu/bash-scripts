@@ -108,7 +108,7 @@ echo -e "\n"
     apt-get install ${APT[@]} -y
 fi
 echo -e "\033[0m";
-
+echo -e "$USERVAR"
 # development
 if [ $DEV = true ] 
   then
@@ -119,7 +119,7 @@ if [ $DEV = true ]
     if [ $USER = true ]
     then
     runuser -l "$USERVAR" -c \
-    $(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash)
+    "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash"
     nvm install node
     else 
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
@@ -134,7 +134,7 @@ apt-get install openssh-server -y && service ssh start
 localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 echo -e "\e[93m";
 
-if [ "$user" = "true" ] 
+if [ "$USER" = "true" ] 
   then
   echo -e "user =  $uservar                            ";
   echo -e "home =  /home/$uservar                      ";
