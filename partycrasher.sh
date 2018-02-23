@@ -16,7 +16,7 @@ echo -e "\e[96m";
 
 # adduser
 echo -e "\e[38;5;82m"
-read -p "Add user? (y/n) " var1
+read -p "Add user? [y/N] " var1
 
 if [ "$var1" = "y" ]
   then
@@ -51,7 +51,7 @@ done
 fi
 
 # sources
-read -p "Do you want clean install of Debian Stretch?(y/n) " var2
+read -p "Do you want clean install of Debian Stretch? [y/N]) " var2
 
 if [ "$var2" = "y" ]
   then
@@ -59,7 +59,7 @@ if [ "$var2" = "y" ]
 fi
 
 # dev packages
-read -p "Do you want nodejs & npm?(y/n) " var3
+read -p "Do you want nodejs & npm? [y/N] " var3
 if [ "$var3" = "y" ]
   then
       DEV=true
@@ -68,7 +68,7 @@ fi
 # custom packages (profile)
 echo -e "\e[95m"
 echo -e "Currently set: ${APT[@]}\e[38;5;82m"
-read -p "Install?(y/n)" profile
+read -p "Install? [y/N]" profile
 echo -e "\e[95m"
 
 if [ "$profile" = "y" ]
