@@ -69,7 +69,7 @@ fi
 echo -e "\e[95m"
 echo -e "Currently set: ${APT[@]}"
 echo -e "\e[38;5;82m"
-read -p "\e[95mInstall ^^ ? (y/n)" profile
+read -p "\e[95m;Install ^^ ? (y/n)" profile
 echo -e ""
 
 if [ "$profile" = "y" ]
@@ -112,8 +112,8 @@ fi
 echo -e "\033[0m";
 
 # development
-if [ $DEV = true ] 
-  then
+#if [ $DEV = true ] 
+#  then
     #if [ $USER = true ]
     #then
     # scriptvar="https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh"
@@ -124,7 +124,7 @@ if [ $DEV = true ]
     # curl -o- "$scriptvar" | bash
     # nvm install node
     #fi
-fi
+#fi
 
 ## initialize ssh server
 apt-get install openssh-server -y && service ssh start
