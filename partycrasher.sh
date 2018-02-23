@@ -130,8 +130,8 @@ if [ $DEV = true ]
     # else 
     # curl -o- "$scriptvar" | bash
     # nvm install node
-    #fi
-#fi
+    fi
+fi
 
 ## initialize ssh server
 if [ "$SSH" = "true" ]
