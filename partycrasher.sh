@@ -67,17 +67,18 @@ if [ "$var3" = "y" ]
 fi
 
 # dev packages
-read -p "Do you want nodejs & npm? [y/N] " var4
-if [ "$var4" = "y" ]
-  then
-      DEV=true
+if [ "$USER" = "true" ]
+  read -p "Do you want nodejs & npm? [y/N] " var4
+  if [ "$var4" = "y" ]
+    then
+        DEV=true
+  fi
 fi
-
 # custom packages (profile)
-echo -e ""
-echo -e "\e[38;5;82mCurrently set: \e[95m ${APT[@]}\e[38;5;82m"
-read -p "Install? [y/N]" profile
-echo -e "\e[95m"
+  echo -e ""
+  echo -e "\e[38;5;82mCurrently set: \e[95m ${APT[@]}\e[38;5;82m"
+  read -p "Install? [y/N]" profile
+  echo -e "\e[95m"
 
 if [ "$profile" = "y" ]
   then
