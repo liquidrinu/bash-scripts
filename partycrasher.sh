@@ -117,7 +117,7 @@ if [ $DEV = true ]
     ## npm install npm@latest -g
     if [ $USER = true ]
     then
-    runuser -l $uservar -c \
+    runuser -l "$USERVAR" -c \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
     nvm install node
     else 
