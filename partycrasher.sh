@@ -160,5 +160,5 @@ if [ "$USER" = "true" ]
   echo -e "user :  $uservar"
   echo -e "home :  /home/$uservar"
 fi
-  echo -e "host =  $localip"
+  echo -e "host :  $localip"
 echo -e "\033[0m";
