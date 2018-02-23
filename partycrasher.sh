@@ -3,6 +3,7 @@
 # insert packages
 APT=('sudo' 'htop' 'git' 'curl' 'wget' 'mpv' 'net-tools');
 
+USERVAR=false
 USER=false
 PASSWD=false
 DISTRO=false
@@ -31,6 +32,7 @@ while [ $USER = false ]
       else
         sudo useradd -m -d "/home/$uservar" -s /bin/bash -U "$uservar"
         sudo usermod -a -G sudo "$uservar"
+        USERVAR=$uservar
         USER=true
     fi
 done
