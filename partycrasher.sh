@@ -78,14 +78,14 @@ if [ "$profile" = "y" ]
 fi
 
 # dev packages
-if [ "$USER" = "true" ] && [ "$PROFILE" = "true" ]
-  then
-  read -p "Do you want nodejs & yarn? [y/N] " var4
-  if [ "$var4" = "y" ]
-    then
-        DEV=true
-  fi
-fi
+#if [ "$USER" = "true" ] && [ "$PROFILE" = "true" ]
+#  then
+#  read -p "Do you want nodejs & yarn? [y/N] " var4
+#  if [ "$var4" = "y" ]
+#    then
+#        DEV=true
+#  fi
+#fi
 
 if [ $DISTRO = true ]
   then
@@ -144,10 +144,10 @@ if [ $DEV = true ]
     if [ $USER = true ]
     then
     # scriptvar="https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh"
-    su "$uservar"
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt-get update && sudo apt-get install yarn
+    #su "$uservar"
+    #curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    #echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    #sudo apt-get update && sudo apt-get install yarn
     fi
 fi
 
