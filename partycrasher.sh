@@ -29,8 +29,8 @@ while [ $USER = false ]
       then
         echo "user already exists!"
       else
-        useradd -m -d "/home/$uservar" -s /bin/bash -U "$uservar"
-        usermod -a -G sudo "$uservar"
+        sudo useradd -m -d "/home/$uservar" -s /bin/bash -U "$uservar"
+        sudo usermod -a -G sudo "$uservar"
         USER=true
     fi
 done
@@ -44,7 +44,7 @@ do
     then
         PASSWD=true
     else
-        passwd "$uservar"
+        sudo passwd "$uservar"
     fi
 done
 fi
