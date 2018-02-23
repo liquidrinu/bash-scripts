@@ -157,8 +157,8 @@ echo -e "\e[93m";
 
 if [ "$USER" = "true" ] 
   then
-  echo -e "user =  $uservar                            ";
-  echo -e "home =  /home/$uservar                      ";
+  echo -e "user :  $uservar"
+  echo -e "home :  /home/$uservar"
 fi
-  echo -e "host =  $localip               ";
-  echo -e "\033[0m";
+  echo -e "host =  $localip"
+echo -e "\033[0m";
