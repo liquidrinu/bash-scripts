@@ -151,13 +151,13 @@ if [ "$USER" = "true" ]; then
   echo -e "home :  /home/$uservar"
 fi
   echo -e "host :  $localip"
-echo -e "\\033[0m";
+  echo -e "\\033[0m";
+
+curr_user="$(whoami)"
 
 # set alias
 read -p "Set Alias? [y/N]" alias
 if [ "$alias" = "y" ]; then
-curr_user="$(whoami)"
-
   if [ -f "/home/$curr_user/.bashrc" ]; then
   echo "alias skaffa='$DIR$0'"
   ##>> "/home/$0/.bashrc"
