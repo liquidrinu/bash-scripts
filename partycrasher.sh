@@ -156,7 +156,7 @@ echo -e "\\033[0m";
 # set alias
 read -p "Set Alias? [y/N]" aliasvar
 if [ "$aliasvar" = "y" ]; then
-  if [ -f "/home/$0/.bashrc" ]; then
+  if [ -f "/home/$(whoami)/.bashrc" ]; then
   echo "alias skaffa='$DIR$0'"
   ##>> "/home/$0/.bashrc"
   fi
