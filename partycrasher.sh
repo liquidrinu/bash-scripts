@@ -10,6 +10,7 @@ DISTRO=false
 SSH=false
 #DEV=false
 PROFILE=false
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Root privileges
 echo -e "\\e[96m";
@@ -155,8 +156,8 @@ echo -e "\\033[0m";
 # set alias
 read -p "Set Alias? [y/N]" aliasvar
 if [ "$aliasvar" = "y" ]; then
-  if [ -f /etc/bash.bashrc ]; then
-    echo "alias skaffa='ls -l'" >> /etc/bash.bashrc
+  if [ -f "/home/$0/.bashrc"]; then
+  echo "alias skaffa='$DIR$0'" >> "/home/$0/.bashrc"
   #if [ "$USER" = "true"]; then
   #  echo ""  echo $PWD
   #fi
