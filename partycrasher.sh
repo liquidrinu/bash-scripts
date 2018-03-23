@@ -159,7 +159,7 @@ curr_user="$(whoami)"
 read -p "Set Alias? [y/N]" alias
 if [ "$alias" = "y" ]; then
   if [ -f "/home/$curr_user/.bashrc" ]; then
-  echo "alias skaffa='$DIR$0'"
+  echo "alias limbo='$DIR$0'"
   ##>> "/home/$0/.bashrc"
   fi
 fi
