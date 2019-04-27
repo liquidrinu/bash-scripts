@@ -142,7 +142,7 @@ fi
     #fi
 #fi
 
-# summary
+# log output
 localip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 echo -e "\\e[93m";
 
